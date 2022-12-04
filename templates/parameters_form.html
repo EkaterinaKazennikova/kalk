@@ -1,27 +1,28 @@
 {% extends "base.html" %}
 {% block header %}
-<h1>Введите свои параметры</h1>
+    <h1>Введите свои параметры</h1>
 
 {% endblock %}
 
 {% block content %}
 
-            {% with messages = get_flashed_messages() %}
+    {% with messages = get_flashed_messages() %}
         {% if messages %}
             <div class="notification is-danger">
                 {{ messages[0] }}
             </div>
         {% endif %}
-        {% endwith %}
+    {% endwith %}
     <div class="container">
-<form action="/parameters/create" method="post">
+        <form action="/parameters/create" method="post">
 
-    <input placeholder="Возраст" name="age" >
-    <input placeholder="Пол"  name="gender" >
-    <input placeholder="Вес"  name="weight" >
-    <input placeholder="Рост"  name="height" >
-    <input type="submit"  value="Сохранить">
-</form>
+            <p><input placeholder="Возраст" name="age"></p>
+            <p><input type="radio" value="male" name="gender"> Мужчина</p>
+            <p><input type="radio" value="female" name="gender"> Женщина</p>
+            <p><input placeholder="Вес" name="weight"></p>
+            <p><input placeholder="Рост" name="height"><p>
+            <input type="submit" value="Сохранить">
+        </form>
     </div>
 
 {% endblock %}

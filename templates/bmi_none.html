@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+
+{% block header %}
+    <h1>Рекомендуемое количество каллорий в день</h1>
+
+{% endblock %}
+
+{% block content %}
+    Для расчёта необходимо <a href="{{ url_for('parameters.parameters_create') }}">внести параметры тела</a>
+            <img src={{ url_for('static', filename="healthy.jpg") }}>
+
+{% endblock %}

@@ -25,7 +25,7 @@ def bmi():
             params.age
         )
         return render_template("bmi.html", bmi=bmi)
-    return redirect(url_for('parameters.parameters_create'))
+    return render_template("bmi_none.html")
 
 
 def calculate_bmi(weight, height, gender, age):
