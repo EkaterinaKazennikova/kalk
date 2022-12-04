@@ -2,7 +2,9 @@
 
     {% block header %}
         <h1>Дневник питания</h1>
-    <a href="{{ url_for('nutrition.nutrition_create') }}">Внести новые данные</a>
+   <li> <a href="{{ url_for('nutrition.nutrition_create') }}">Внести новые данные</a></li>
+        <li><a href="{{ url_for('bmi.bmi') }}">Ваш BMI</a></li>
+
 
     {% endblock %}
 {% block content %}

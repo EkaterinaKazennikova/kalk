@@ -20,7 +20,7 @@
       {% for param in params %}
         <tr>
           <td>{{ param.age }}</td>
-          <td>{{ param.gender }}</td>
+          <td>{{ 'Мужчина' if param.gender == 'male' else 'Женщина' }}</td>
           <td>{{ param.weight }}</td>
           <td>{{ param.height }}</td>
         </tr>
