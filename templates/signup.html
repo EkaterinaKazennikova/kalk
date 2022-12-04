@@ -1,10 +1,11 @@
 <!-- templates/signup.html -->
 
 {% extends "base.html" %}
-
+    {% block header %}
+    <h3 class="title">Создание аккаунта</h3>
+    {% endblock %}
 {% block content %}
 <div class="column is-4 is-offset-4">
-    <h3 class="title">Sign Up</h3>
     <div class="box">
         {% with messages = get_flashed_messages() %}
         {% if messages %}

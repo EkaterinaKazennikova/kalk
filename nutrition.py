@@ -9,7 +9,7 @@ import re
 
 from .models import User, Nutrition, Parameters, db
 
-nutrition = Blueprint('nutrition', __name__)
+nutrition = Blueprint('nutrition', __name__, url_prefix='/nutrition')
 
 
 @nutrition.route("/create", methods=["GET", "POST"])
@@ -23,6 +23,4 @@ def nutrition_create():
         db.session.add(nutrition)
         db.session.commit()
         flash("Вы успешно внесли свои данные")
-        return render_template("success.html")
-
     return render_template("nutrition.html")

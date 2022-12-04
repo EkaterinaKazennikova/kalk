@@ -21,7 +21,7 @@ with app.app_context():
 def index():
     if current_user.is_authenticated:
         return redirect(url_for('main.profile'))
-    return redirect(url_for('login'))
+    return redirect(url_for('auth.login'))
 
 
 @main.route('/profile')

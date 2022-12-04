@@ -28,6 +28,6 @@ class Parameters(db.Model):
 class Nutrition(db.Model):
     __tablename__ = "nutrition"
     id = db.Column(db.Integer, primary_key=True)
-    food = db.Column(db.String, unique=True, nullable=False)
+    food = db.Column(db.String, nullable=False)
     water = db.Column(db.Integer, nullable=False)
     workout = db.Column(db.String, nullable=False)
