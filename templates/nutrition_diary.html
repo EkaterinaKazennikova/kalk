@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+    {% block header %}
+        <h1>Дневник питания</h1>
+    {% endblock %}
+{% block content %}
+
+  <table id="data" class="table">
+    <thead>
+      <tr>
+        <th>Съедено</th>
+        <th>Выпито</th>
+        <th>Отработано</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for nutrition_log in nutrition_logs %}
+        <tr>
+          <td>{{ nutrition_log.food }}</td>
+          <td>{{ nutrition_log.water }}</td>
+          <td>{{ nutrition_log.workout }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

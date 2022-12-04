@@ -12,7 +12,8 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(100), unique=True)
     password = db.Column(db.String(100))
     name = db.Column(db.String(1000))
-    parameters = db.relationship('Parameters', backref='author', lazy='dynamic')
+    parameters = db.relationship('Parameters', backref='user', lazy='dynamic')
+    nutrition = db.relationship('Nutrition', backref='user', lazy='dynamic')
 
 
 class Parameters(db.Model):
@@ -31,3 +32,5 @@ class Nutrition(db.Model):
     food = db.Column(db.String, nullable=False)
     water = db.Column(db.Integer, nullable=False)
     workout = db.Column(db.String, nullable=False)
+    user_id = db.Column(db.Integer, ForeignKey("user.id"))
+

@@ -20,10 +20,10 @@ with app.app_context():
 @main.route('/')
 def index():
     if current_user.is_authenticated:
-        return redirect(url_for('main.profile'))
+        return redirect(url_for('main.data'))
     return redirect(url_for('auth.login'))
 
 
-@main.route('/profile')
-def profile():
-    return render_template('profile.html', name=current_user.name)
+@main.route('/data')
+def data():
+    return render_template('data.html', name=current_user.name)

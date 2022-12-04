@@ -1,0 +1,12 @@
+<!-- templates/profile.html -->
+
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title">
+  Привет, {{ name }}!
+</h1>
+    <li><a href="{{ url_for('parameters.parameters_create') }}">Внести параметры тела</a></li>
+    <li><a href="{{ url_for('nutrition.nutrition_create') }}">Внести данные о питании</a></li>
+    <li><a href="{{ url_for('bmi.get_bmi') }}">Рассчитать BMI</a></li>
+{% endblock %}

@@ -12,7 +12,7 @@ from .models import User, Nutrition, Parameters, db
 parameters_bp = Blueprint('parameters', __name__, url_prefix='/parameters')
 
 
-@parameters_bp.route("/get")
+@parameters_bp.route("/")
 @login_required
 def parameters():
     params = Parameters.query.filter_by(user_id=current_user.id)
