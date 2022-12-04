@@ -40,8 +40,8 @@ def create_app():
     app.register_blueprint(main_blueprint)
 
     # blueprint for non-auth parts of app
-    from .parameters import parameters as parameters_blueprint
-    app.register_blueprint(parameters_blueprint)
+    from .parameters import parameters_bp
+    app.register_blueprint(parameters_bp)
 
     # blueprint for non-auth parts of app
     from .bmi import bmi as bmi_blueprint

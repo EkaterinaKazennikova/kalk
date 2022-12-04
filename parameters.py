@@ -9,10 +9,17 @@ import re
 
 from .models import User, Nutrition, Parameters, db
 
-parameters = Blueprint('parameters', __name__, url_prefix='/parameters')
+parameters_bp = Blueprint('parameters', __name__, url_prefix='/parameters')
 
 
-@parameters.route("/create", methods=["GET", "POST"])
+@parameters_bp.route("/get")
+@login_required
+def parameters():
+    params = Parameters.query.filter_by(user_id=current_user.id)
+    return render_template("parameters.html", user=current_user.name, params=params)
+
+
+@parameters_bp.route("/create", methods=["GET", "POST"])
 @login_required
 def parameters_create():
     if request.method == "POST":
@@ -26,5 +33,5 @@ def parameters_create():
         db.session.add(params)
         db.session.commit()
         flash("Ваши данные успешно внесены")
-        return redirect(url_for('main.index'))
-    return render_template("parameters.html")
+        return redirect(url_for('.parameters'))
+    return render_template("parameters_form.html")

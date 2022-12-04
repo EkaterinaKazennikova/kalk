@@ -1,6 +1,6 @@
 # main.py
 
-from flask import Blueprint, render_template, Flask
+from flask import Blueprint, render_template, Flask, url_for, current_app, redirect
 from flask_login import login_required, current_user
 from flask_sqlalchemy import SQLAlchemy
 
@@ -20,11 +20,10 @@ with app.app_context():
 @main.route('/')
 def index():
     if current_user.is_authenticated:
-        return render_template('profile.html')
-    return render_template('login.html')
+        return redirect(url_for('main.profile'))
+    return redirect(url_for('login'))
 
 
 @main.route('/profile')
-@login_required
 def profile():
     return render_template('profile.html', name=current_user.name)

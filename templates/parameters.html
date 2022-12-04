@@ -1,18 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Введите свои параметры</title>
-</head>
-<body>
-<h1>Введите свои параметры</h1>
-<form action="/parameters/create" method="post">
-    <input placeholder="Возраст" name="age" >
-    <input placeholder="Пол"  name="gender" >
-    <input placeholder="Вес"  name="weight" >
-    <input placeholder="Рост"  name="height" >
-    <input type="submit"  value="PUSH">
+{% extends "base.html" %}
+{% block content %}
+    <h1>Ваши параметры</h1>
 
-</form>
-
- </html>
+  <table id="data" class="table">
+    <thead>
+      <tr>
+        <th>Возраст</th>
+        <th>Пол</th>
+        <th>Вес</th>
+        <th>Рост</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for param in params %}
+        <tr>
+          <td>{{ param.age }}</td>
+          <td>{{ param.gender }}</td>
+          <td>{{ param.weight }}</td>
+          <td>{{ param.height }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
