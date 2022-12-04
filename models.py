@@ -3,7 +3,7 @@
 from flask_login import UserMixin
 from sqlalchemy import ForeignKey
 
-from . import db
+from main import db
 
 
 class User(UserMixin, db.Model):

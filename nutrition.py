@@ -7,7 +7,7 @@ from flask_sqlalchemy import SQLAlchemy
 import bcrypt
 import re
 
-from .models import User, Nutrition, Parameters, db
+from models import User, Nutrition, Parameters, db
 
 nutrition_bp = Blueprint('nutrition', __name__, url_prefix='/nutrition')
 
