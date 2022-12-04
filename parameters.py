@@ -35,3 +35,21 @@ def parameters_create():
         flash("Ваши данные успешно внесены")
         return redirect(url_for('.parameters'))
     return render_template("parameters_form.html")
+
+
+@parameters_bp.route("/update", methods=["GET", "POST"])
+@login_required
+def parameters_update():
+    if request.method == "POST":
+        params = Parameters(
+            age=request.form["age"],
+            gender=request.form["gender"],
+            weight=request.form["weight"],
+            height=request.form["height"],
+            user_id=current_user.id
+        )
+        db.session.add(params)
+        db.session.commit()
+        flash("Ваши данные успешно обновлены")
+        return redirect(url_for('.parameters'))
+    return render_template("parameters_form.html")

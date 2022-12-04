@@ -16,7 +16,7 @@ nutrition_bp = Blueprint('nutrition', __name__, url_prefix='/nutrition')
 @nutrition_bp.route("/diary")
 def nutrition_diary():
     nutrition_logs = Nutrition.query.filter_by(user_id=current_user.id)
-    return render_template("nutrition_diary.html", nutrition_logs=nutrition_logs)
+    return render_template("nutrition/nutrition_diary.html", nutrition_logs=nutrition_logs)
 
 
 @login_required
@@ -32,4 +32,5 @@ def nutrition_create():
         db.session.add(nutrition_log)
         db.session.commit()
         flash("Вы успешно внесли свои данные")
-    return render_template("nutrition_form.html")
+        return redirect(url_for('.nutrition_diary'))
+    return render_template("nutrition/nutrition_form.html")

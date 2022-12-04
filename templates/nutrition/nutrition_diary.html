@@ -2,6 +2,8 @@
 
     {% block header %}
         <h1>Дневник питания</h1>
+    <a href="{{ url_for('nutrition.nutrition_create') }}">Внести новые данные</a>
+
     {% endblock %}
 {% block content %}
 

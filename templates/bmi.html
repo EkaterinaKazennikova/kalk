@@ -1,30 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<meta charset="UTF-8">
-    <title>Рассчитаем индекс массы тела</title>
-     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-</head>
-<body>
+{% extends "base.html" %}
 
-  <h1> BMI </h1>
-    <div id="contener">
 
-    </div>
+{% block header %}
+    <h1>Ваше рекомендуемое количество каллорий в день</h1>
 
-</body>
-<style>
-input[type="button"] {
-    width: 50px;
-    height: 50px;
-}
-<style>
-<script>
-     function bmi_get(){
-        axios.get('/bmi_get', {})
-    .then(function (response) {
+{% endblock %}
 
-        console.log(response)
-        alert(response.data)
-    })}
-</script>
-</html>
+{% block content %}
+    <h1>{{ bmi }}</h1>
+{% endblock %}

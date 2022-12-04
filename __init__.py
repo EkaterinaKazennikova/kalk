@@ -44,8 +44,8 @@ def create_app():
     app.register_blueprint(parameters_bp)
 
     # blueprint for non-auth parts of app
-    from .bmi import bmi as bmi_blueprint
-    app.register_blueprint(bmi_blueprint)
+    from .bmi import bmi_bp
+    app.register_blueprint(bmi_bp)
 
     # blueprint for non-auth parts of app
     from .nutrition import nutrition_bp
