@@ -1,20 +1,21 @@
 # main.py
 
 from flask import Blueprint, render_template, Flask, url_for, current_app, redirect
-from flask_login import login_required, current_user
+from flask_login import login_required, current_user, login_manager
 from flask_sqlalchemy import SQLAlchemy
+
+from app import create_app, login_manager
+from models import User
 
 index_bp = Blueprint('index', __name__)
 
 
-app = Flask(__name__)
-app.secret_key = 'secret'
-db = SQLAlchemy()
-app.config["SQLALCHEMY_DATABASE_URI"] = 'postgresql+psycopg2://postgres:4511@localhost:5432/kalk'
-db.init_app(app)
 
-with app.app_context():
-    db.create_all()
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
+app = create_app()
 
 
 @index_bp.route('/')
