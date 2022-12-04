@@ -1,56 +1,25 @@
-<html lang="ru" >
- <head>
-   <meta charset="utf-8">
-   <title>Healthy Nutrition</title>
-   <link rel="stylesheet" href="{{ url_for('static', filename='css/default.css') }}">
-      <hr/>  <!-- Тут разделяем заголовок и текст сплошной чертой -->
-     <style> <!-- Открываем тег <style> - именно внутри него указываются наши стили -->
-
-
-
-   	   background: 	#000000;
-	   color: #fff;
-   }
-   a {
-   color: #808000
-   }
-   h1 {
-   color: #008080
-   }
-   p {
-   color: #008000
-   }
-   ol {
-   color: #008000
-   }
-
-        </style>
- </head>
- <body>
-
-    <header>
-        <h1 class="logo">{{title}}</h1>
-        <nav>
-            <hr/>  <!-- Тут разделяем заголовок и текст сплошной чертой -->
-          <ul class="menu">
-            <li><a href="{{ url_for('account_create') }}">Создать аккаунт</a></li>
-            <li><a href="{{ url_for('parameters_create') }}">Задать параметры</a></li>
-            <li><a href="{{ url_for('nutrition_create') }}">Внести данные</a></li>
-          </ul>
-             <hr/>  <!-- Тут разделяем заголовок и текст сплошной чертой -->
-        </nav>
-        <div
-        <picture>
-
-  <img src="Hel.jpg"
-     width="500"
-     height="441"
-     alt="">
-
-        </picture>
+{% extends "base.html" %}
+{% block content %}
+    <div id="navbarMenuHeroA" class="navbar-menu">
+        <div class="navbar-end">
+            {% if current_user.is_authenticated %}
+                <a href="{{ url_for('main.profile') }}" class="navbar-item">
+                    Профиль
+                </a>
+            {% endif %}
+            {% if not current_user.is_authenticated %}
+                <a href="{{ url_for('auth.login') }}" class="navbar-item">
+                    Войти
+                </a>
+                <a href="{{ url_for('auth.signup') }}" class="navbar-item">
+                    Создать аккаунт
+                </a>
+            {% endif %}
+            {% if current_user.is_authenticated %}
+                <a href="{{ url_for('auth.logout') }}" class="navbar-item">
+                    Выйти
+                </a>
+            {% endif %}
         </div>
-    </header>
-    {% block content %}
-    {% endblock %}
- </body>
-</html>
+        </div>
+{% endblock %}
