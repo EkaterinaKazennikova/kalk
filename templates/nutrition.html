@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+    {% block header %}
+    <h1>Добавьте свои данные</h1>
+{% endblock %}
+
+{% block content %}
+
+    <form action="/nutrition/create" method="post">
+        <div class="form-group">
+            <input placeholder="Ввести продукт" type="text" name="food" class="form-control">
+        </div>
+        <div class="form-group">
+            <input placeholder="Количество выпитой воды" name="water"class="form-control">
+        </div>
+        <div class="form-group">
+            <input placeholder="Тренировка" name="workout" class="form-control">
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Сохранить">
+        </div>
+
+        <hr/>  <!-- Тут разделяем заголовок и текст сплошной чертой -->
+    </form>
+    <h2>
+        <title> ФОРМУЛА СБАЛАНСИРОВАННОГО ПИТАНИЯ 1:1:4</title>
+    </h2>
+
+    <p>Потребление жиров не должно превышать 30% от общей потребляемой энергии</p>
+    <p>Насыщенные жиры должны составлять менее 10%</p>
+    <p>Трансжиры – менее 1%</p>
+    <p>Сокращение потребления свободных сахаров до менее 10%</p>
+    <p>Потребление менее 5 г/день соли/35 г мес</p>
+    <p>Доля белков должна обеспечивать от 10 до 15%, углеводов – от 55 до 75%</p>
+
+{% endblock %}
