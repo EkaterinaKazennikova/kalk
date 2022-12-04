@@ -20,7 +20,7 @@ with app.app_context():
 @index_bp.route('/')
 def index():
     if current_user.is_authenticated:
-        return redirect(url_for('main.data'))
+        return redirect(url_for('index.data'))
     return redirect(url_for('auth.login'))
 
 
