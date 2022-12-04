@@ -2,6 +2,7 @@ from flask import Flask, url_for, redirect, flash, Blueprint
 from flask import request, render_template
 from flask import session
 from flask_login import login_user, logout_user, login_required, current_user
+from sqlalchemy import desc
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
 import bcrypt
@@ -15,7 +16,7 @@ nutrition_bp = Blueprint('nutrition', __name__, url_prefix='/nutrition')
 @login_required
 @nutrition_bp.route("/diary")
 def nutrition_diary():
-    nutrition_logs = Nutrition.query.filter_by(user_id=current_user.id)
+    nutrition_logs = Nutrition.query.filter_by(user_id=current_user.id).order_by(desc(Nutrition.id))
     return render_template("nutrition/nutrition_diary.html", nutrition_logs=nutrition_logs)
 
 

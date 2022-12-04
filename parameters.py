@@ -2,6 +2,7 @@ from flask import Flask, url_for, redirect, flash, Blueprint
 from flask import request, render_template
 from flask import session
 from flask_login import login_user, logout_user, login_required, current_user
+from sqlalchemy import desc
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
 import bcrypt
@@ -15,7 +16,7 @@ parameters_bp = Blueprint('parameters', __name__, url_prefix='/parameters')
 @parameters_bp.route("/")
 @login_required
 def parameters():
-    params = Parameters.query.filter_by(user_id=current_user.id)
+    params = Parameters.query.filter_by(user_id=current_user.id).order_by(desc(Parameters.id))
     return render_template("parameters.html", user=current_user.name, params=params)
 
 
