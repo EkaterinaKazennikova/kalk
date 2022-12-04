@@ -10,12 +10,11 @@ from models import User
 index_bp = Blueprint('index', __name__)
 
 
-
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-app = create_app()
+# app = create_app()
 
 
 @index_bp.route('/')
