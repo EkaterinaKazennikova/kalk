@@ -35,28 +35,11 @@ def create_app():
     #         return user
 
     # blueprint for auth routes in our app
-    from auth import auth as auth_blueprint
-    app.register_blueprint(auth_blueprint)
 
-    # blueprint for non-auth parts of app
-    from index import index_bp
-    app.register_blueprint(index_bp)
-
-    # blueprint for non-auth parts of app
-    from parameters import parameters_bp
-    app.register_blueprint(parameters_bp)
-
-    # blueprint for non-auth parts of app
-    from bmi import bmi_bp
-    app.register_blueprint(bmi_bp)
-
-    # blueprint for non-auth parts of app
-    from nutrition import nutrition_bp
-    app.register_blueprint(nutrition_bp)
 
     return app
 
-
-if __name__ == "__main__":
-    app = create_app()
-    app.run()
+#
+# if __name__ == "__main__":
+#     app = create_app()
+#     app.run()
